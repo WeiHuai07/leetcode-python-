@@ -1,0 +1,18 @@
+class Solution:
+    def removeElement(self, nums: List[int], val: int) -> int:
+        a = nums.count(val)
+        for i in range(a):
+                nums.remove(val)
+                #刚开始的思路是遍历数组中的每个数，if相等就remove，但发现不行，不知道为什么，有一个有相同思路的人，然后有一行代码我看不懂，贴在下面好了# 
+        print(len(nums))
+        
+        
+        
+class Solution:
+    def removeElement(self, nums: List[int], val: int) -> int:
+        for i in nums:
+            if i == val:
+                nums.remove(i)
+                self.removeElement(nums,val)
+                #这句看不懂，我没有这句，运行就显示错误#
+        return len(nums)
