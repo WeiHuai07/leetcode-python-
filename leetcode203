@@ -1,0 +1,14 @@
+class Solution:
+    def removeElements(self, head: ListNode, val: int) -> ListNode:
+        #新建一个头节点#
+        dummy=ListNode(8)
+        dummy.next=head
+        prev=dummy
+        while (head!=None):
+            if (head.val==val):
+                head=head.next
+                prev.next=head
+            else:
+                prev=head
+                head=head.next
+        return dummy.next
