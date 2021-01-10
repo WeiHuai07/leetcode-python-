@@ -1,0 +1,32 @@
+#方案一：提交版#
+class RecentCounter:
+
+    def __init__(self):
+        # 纪录状态
+        self.num = []
+        
+
+    def ping(self, t: int) -> int:
+        self.num.append(t)
+        # 状态维护
+        while t - self.num[0] > 3000:
+            self.num.pop(0)
+        return len(self.mem)
+
+#老师思路版本，写的时候没看到，可执行#
+from collections import deque  
+# 通过collections模块导入双端队列deque#
+class RecentCounter:
+    def __init__(self):
+        self.pingdeque = deque([])  
+          # 定义一个空双端队列，这一步很重要，你知道思路不会的原因在这里#
+          
+
+    def ping(self, t: int) -> int:
+        self.pingdeque.append(t)  
+          # 保存ping的时间点t到队列#
+        while t-self.pingdeque[0] > 3000:  
+          # 删除t之前3000ms的时间点 #
+            self.pingdeque.popleft()
+        return len(self.pingdeque)  # 返回队列中剩下的时间节点个数即是t到t之前3000ms的ping的次数
+
