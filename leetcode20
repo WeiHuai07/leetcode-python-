@@ -1,0 +1,36 @@
+#方案一，抄答案来的，真的是神奇解法，很棒。老师的思路是栈的思路，压入对比#
+class Solution:
+    def isValid(self, s: str) -> bool:
+        while '[]' in s or '()' in s or '{}' in s:
+            s=s.replace('[]','')  
+            s=s.replace('()','')
+            s=s.replace('{}','')
+        return s==''
+        
+        
+#老师的思路：左括号压入栈，一旦遇到右括号，最后一个出来，对应就pop#
+‘’‘class Solution:
+    def isValid(self, s: str) -> bool:
+        
+        zhan=[]
+        for c in s:
+            if(c=='(' or c=='[' or c=='{'):
+                zhan.append(c)
+            else:
+                
+                zhanding=zhan.pop()
+                if c==')':
+                    if zhanding!='(':
+                        return False
+                elif  c==']':
+                    if zhanding!='[':
+                        return False
+                elif  c=='}':
+                    if zhanding!='{':
+                        return False
+        if zhan:
+            return False
+        else:
+            return True
+
+可运行，但没有提交’‘’
