@@ -1,0 +1,13 @@
+#https://leetcode-cn.com/problems/binary-tree-inorder-traversal/solution/python3-er-cha-shu-suo-you-bian-li-mo-ban-ji-zhi-s/
+#根据144二叉树前序遍历和上面评论改的二叉树递归遍历
+class Solution:
+    def inorderTraversal(self, root: TreeNode) -> List[int]:
+        def inorder(root:TreeNode):
+            if not root:
+                return
+            inorder(root.left) 
+            res.append(root.val)
+            inorder(root.right)
+        res=list()
+        inorder(root)
+        return res
