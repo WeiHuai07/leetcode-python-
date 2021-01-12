@@ -1,0 +1,10 @@
+#官方解答中堆的思路，大致理解思路，但基础知识不全看不懂，所以北大的那个课程真的有用，B站小姐姐的基础知识太少了，基础语言真的不介绍，没法写
+class Solution:
+    
+    def topKFrequent(self, words: List[str], k: int) -> List[str]:
+        
+        
+        count = collections.Counter(words)
+        heap = [(-freq, word) for word, freq in count.items()]
+        heapq.heapify(heap)
+        return [heapq.heappop(heap)[1] for _ in range(k)]
