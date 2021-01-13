@@ -1,0 +1,23 @@
+class Solution:
+    def minSubArrayLen(self, s: int, nums: List[int]) -> int:
+        if not nums:
+            return 0
+        
+        n=len(nums)
+        #代码灵魂在a加啥都可以
+        a=n+2
+        qian,hou=0,0
+        total=0
+        while hou<n:
+            total=total+nums[hou]
+            while total>=s:
+                a=min(a,hou-qian+1)
+                total=total-nums[qian]
+                qian=qian+1
+            hou+=1
+            
+        #代码灵魂在a加啥都可以
+        if a==n+2:
+            return 0
+        else:
+            return a
