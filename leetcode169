@@ -1,0 +1,17 @@
+#分治法练习题，如果用两个数不等就去掉，开心消消乐（摩尔投票法）也可以，在解答里有人写
+class Solution:
+    def majorityElement(self, nums: List[int]) -> int:
+        def fenzhi(zuo,you):
+            if zuo==you:
+                return nums[zuo]
+            zhong=(you-zuo)//2+zuo
+            qian=fenzhi(zuo,zhong)
+            hou=fenzhi(zhong+1,you)
+
+            if qian==hou:
+                return qian
+            
+            qian_count=sum(1 for i in range(zuo,you+1) if nums[i]==qian)
+            hou_count=sum(1 for i in range(zuo,you+1) if nums[i]==hou)
+            return qian if qian_count>hou_count else hou
+        return fenzhi(0, len(nums)-1)
