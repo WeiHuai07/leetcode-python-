@@ -1,0 +1,18 @@
+#滑动窗口
+class Solution:
+    def maxVowels(self, s: str, k: int) -> int:
+        def isVowel(ch):
+            return int(ch in "aeiou")
+        n=len(s)
+        a=0
+        b=0
+        for i in range(k):
+            if isVowel(s[i]):
+                a=a+1
+                b=a
+        for i in range(k,n):
+            a=a+isVowel(s[i])-isVowel(s[i - k])
+            b = max(a,b)
+        return b
+            
+            
