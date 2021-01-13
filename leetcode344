@@ -1,0 +1,10 @@
+class Solution:
+    def reverseString(self, s: List[str]) -> None:
+        qian,hou=0,len(s)-1
+        while qian<hou:
+            #这一步是同时进行的，也就是前后直接交换，不需要在让a=前保存再等于
+            s[qian],s[hou]=s[hou],s[qian]
+            qian=qian+1
+            hou=hou-1
+       
+       
