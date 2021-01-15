@@ -1,0 +1,19 @@
+class Solution:
+    def rangeSumBST(self, root: TreeNode, low: int, high: int) -> int:
+        
+        def dfs(node):
+            global ans
+            if node:
+                if low <= node.val <= high:
+                    ans=ans+node.val
+                    dfs(node.left)
+                    dfs(node.right)
+                if low>node.val:
+                    dfs(node.right)
+                if node.val>high:
+                    dfs(node.left)
+        global ans
+        ans=0        
+        dfs(root)
+        return ans
+        
