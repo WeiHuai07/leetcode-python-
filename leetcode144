@@ -4,8 +4,9 @@ class Solution:
         def preorder(root: TreeNode):
             if not root:
                 return
-            res.append(root.val)
+            res.append(root.val）
             preorder(root.left)
+            
             preorder(root.right)
         
         res = list()
