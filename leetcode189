@@ -1,0 +1,13 @@
+class Solution:
+    def rotate(self, nums: List[int], k: int) -> None:
+        """
+        Do not return anything, modify nums in-place instead.
+        """
+        shuzu=[]
+        for i in nums:
+            shuzu.append(i)
+        k=k%len(nums)
+        for i in range(k):
+            nums[i]=shuzu[-k+i]
+        for j in range(k,len(nums)):
+            nums[j]=shuzu[j-k]
