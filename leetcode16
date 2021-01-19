@@ -1,0 +1,24 @@
+class Solution:
+    def threeSumClosest(self, nums: List[int], target: int) -> int:
+        n=len(nums)
+        if n==3: #只有三个数直接相加
+            return nums[0]+nums[1]+nums[2]
+        d=float('inf')
+        nums=sorted(nums)
+        ans=0
+        for i in range(n):
+            l,r=i+1,n-1
+            while l<r:
+                x=(nums[i]+nums[l]+nums[r])-target
+                if abs(x)<d:#更新最短距离
+                    d=abs(x)
+                    ans=nums[i]+nums[l]+nums[r]
+                if x>0: #大于target，所以需要更小的数，右指针左移
+                    r-=1
+                elif x<0:#小于target，所以需要更大的数，左指针右移
+                    l+=1
+                else:#与target相等，直接返回就行
+                    return target
+        return ans
+
+
