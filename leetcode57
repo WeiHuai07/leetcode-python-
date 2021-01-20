@@ -1,0 +1,36 @@
+class Solution:
+    def insert(self, intervals: List[List[int]], newInterval: List[int]) -> List[List[int]]:
+        n = len(intervals)
+        
+        ans = []
+
+        i = 0
+        # 遍历原区间列表
+        # 先考虑原区间列表中的区间，右端的值小于新区间左端的值的情况
+        while i < n and intervals[i][1] < newInterval[0]:
+            ans.append(intervals[i])
+            # 循环查找，直至发现重叠部分
+            i += 1
+        
+        # 处理重叠部分
+        # 这里还有个隐式条件，也就是上面条件不成立，
+        # 此时 intervals[i][1] >= newInterval[0]
+        while i < n and intervals[i][0] <= newInterval[1]:
+            # 进行合并，左端值取原两个区间的较小值，而右端值取两区间中的较大值
+            # 这里直接将合并的区间更新到 newInterval 上
+            newInterval[0] = min(intervals[i][0], newInterval[0])
+            newInterval[1] = max(intervals[i][1], newInterval[1])
+            i += 1
+        # 合并之后，加到结果列表中
+        ans.append([newInterval[0], newInterval[1]])
+
+        # 最后处理原区间列表中的区间，左端的值大于新区间右端的值的情况
+        while i < n and intervals[i][0] > newInterval[1]:
+            ans.append(intervals[i])
+            i += 1
+        
+        return ans
+
+
+
+#链接：https://leetcode-cn.com/problems/insert-interval/solution/57-cha-ru-qu-jian-by-yiluolion/
