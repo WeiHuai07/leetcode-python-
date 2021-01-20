@@ -1,0 +1,20 @@
+class Solution:
+    def plusOne(self, digits: List[int]) -> List[int]:
+        digits = [0] + digits
+        for i in range(len(digits)-1,-1,-1):
+            if digits[i] != 9:
+                digits[i] += 1
+                break
+            else:
+                digits[i] = 0
+                #digits[i]=digits[i]+1 这句是不需要的，因为上面一个只要不是9就加一，尾数为9，会在上面加一然后break，非常妙的解法
+
+        if digits[0] == 0:
+            return digits[1:] 
+        else:
+            return digits
+
+
+
+
+#链接：https://leetcode-cn.com/problems/plus-one/solution/shi-yong-python3de-liang-chong-jie-ti-si-hsit/
