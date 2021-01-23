@@ -1,0 +1,22 @@
+class Solution:
+    def rotateRight(self, head: ListNode, k: int) -> ListNode:
+        if not head or not head.next:
+            return head
+        oldTail = head
+        length = 1
+        while oldTail.next:     #计算长度
+            length += 1
+            oldTail = oldTail.next
+        oldTail.next = head     #闭环
+
+        newTail = head
+        number = k % length     #求余数
+        for _ in range(length - number - 1):    #找到新的尾结点
+            newTail = newTail.next
+        newHead = newTail.next
+
+        newTail.next = None     #断链
+        return newHead
+
+
+#链接：https://leetcode-cn.com/problems/rotate-list/solution/python3-bi-huan-duan-lian-61-by-lionking_njuer/
