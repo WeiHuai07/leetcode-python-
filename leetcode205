@@ -1,0 +1,5 @@
+class Solution:
+    def isIsomorphic(self, s: str, t: str) -> bool:
+        return all(s.index(s[i]) == t.index(t[i])  for i in range(len(s)))
+
+# https://leetcode-cn.com/problems/isomorphic-strings/solution/yi-xing-dai-ma-si-lu-jian-dan-by-jamleon-sst5/
