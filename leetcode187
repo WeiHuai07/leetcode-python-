@@ -1,0 +1,13 @@
+class Solution:
+    def findRepeatedDnaSequences(self, s: str) -> List[str]:
+        st = set()  # 已出现的值集合
+        st2 = set()  # 返回值集合
+        for i in range(len(s)-9):
+            if s[i: i+10] not in st2:
+                if s[i: i+10] in st:  # 如果以前遍历过当前段
+                    st2.add(s[i: i+10])  # 将返回值集合增加当前段
+                st.add(s[i: i+10])  # 给已遍历的集合增加当前段
+        return list(st2)  # 返回转换成列表的返回集合
+
+
+#链接：https://leetcode-cn.com/problems/repeated-dna-sequences/solution/python3-ji-he-by-ting-ting-28/
