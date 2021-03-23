@@ -1,0 +1,16 @@
+class Solution:
+    # Recursion
+    # @爱学习的饲养员
+    # N is the size of l1, M is the size of l2
+    # Time Complexity: O(max(M,N))
+    # Space Complexity: O(max(M,N)) if dummy is counted else O(1)
+    def addTwoNumbers(self, l1: ListNode, l2: ListNode) -> ListNode:
+        total = l1.val + l2.val
+        next1 = total // 10
+        res = ListNode(total % 10)
+        if (l1.next or l2.next or next1):
+            l1 = l1.next if l1.next else ListNode(0)
+            l2 = l2.next if l2.next else ListNode(0)
+            l1.val += next1
+            res.next = self.addTwoNumbers(l1,l2);
+        return res;
