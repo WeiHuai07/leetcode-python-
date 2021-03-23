@@ -1,0 +1,8 @@
+class Solution:
+    def swapPairs(self, head: ListNode) -> ListNode:
+        if head==None or head.next==None:
+            return head
+        nxt=head.next
+        head.next=self.swapPairs(head.next.next)
+        nxt.next=head
+        return nxt
