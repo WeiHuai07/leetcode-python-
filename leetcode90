@@ -1,0 +1,20 @@
+class Solution:
+    def subsetsWithDup(self, nums: List[int]) -> List[List[int]]:
+        if not nums:
+            return []
+
+        def dfs(start_index,nums,path,res):
+            res.append(copy.deepcopy(path))
+            for i in range(start_index,len(nums)):
+                if i>start_index and nums[i]==nums[i-1]:
+                    continue
+                path.append(nums[i])
+                dfs(i+1,nums,path,res)
+                path.pop()
+        nums.sort()
+        res=[]
+        path=[]
+        start_index=0
+        dfs(start_index,nums,path,res)
+        return res
+        
