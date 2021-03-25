@@ -1,0 +1,25 @@
+class Solution:
+    def singleNonDuplicate(self, nums: List[int]) -> int:
+        if len(nums) == 1:
+            return nums[0]
+        left = 0
+        right = len(nums)-1
+        while left <= right:
+            mid = (left + right) // 2
+            if mid % 2 == 0 and mid + 1 < len(nums):  # mid是偶数(nums[mid]前面有偶数个元素)
+                if nums[mid] == nums[mid+1]:   # mid前面没有单一元素
+                    left = mid + 1
+                else:   # mid前面有单一元素
+                    right = mid - 1
+            elif mid % 2 != 0 and mid + 1 < len(nums):   # mid是奇数(nums[mid]前面有奇数个元素)
+                if nums[mid] == nums[mid+1]:  # mid前面有单一元素
+                    right = mid - 1
+                else:   # mid前面没有单一元素
+                    left = mid + 1
+            else:
+                return nums[mid]
+        return nums[left]
+
+
+
+'''链接：https://leetcode-cn.com/problems/single-element-in-a-sorted-array/solution/python3-qing-xi-si-lu-yong-shi-ji-bai-97nei-cun-ji/'''
