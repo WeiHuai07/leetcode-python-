@@ -1,0 +1,16 @@
+class Solution:
+    def frequencySort(self, s: str) -> str:
+        dic={}
+        res=''
+        for i in s:
+            dic[i]=dic.get(i,0)+1
+            #https://blog.csdn.net/weixin_44180067/article/details/88559874 字典中get()的解释
+        dic=sorted(dic.items(),key=lambda k:-k[1])
+        for i in dic:       #这个i是key:value
+            for j in range(i[1]):   #i[1]是value
+                res+=i[0]        #i[0]是key
+        
+        return res
+
+'''链接：https://leetcode-cn.com/problems/sort-characters-by-frequency/solution/yong-pythonzi-dian-pai-xu-ran-hou-bian-l-c3yk/
+'''
