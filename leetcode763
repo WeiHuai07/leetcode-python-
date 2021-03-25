@@ -1,0 +1,27 @@
+class Solution:
+    def partitionLabels(self, S: str) -> List[int]:
+        #https://www.bilibili.com/video/BV1Jh41127hz?from=search&seid=2825357087094903250
+        dic={}
+        for i in range(len(S)):
+            if S[i] not in dic:
+                dic[S[i]]=i
+            else:
+                dic[S[i]]=max(dic[S[i]],i)
+
+        end=dic[S[0]]
+        index=0
+        a=0
+        ans=[]
+
+        while index<len(S):
+            a=a+1
+            if index==end:
+                ans.append(a)
+                a=0
+                if index+1<len(S):
+                    end=dic[S[index+1]]
+            else:
+                end=max(end,dic[S[index]])
+            index+=1
+
+        return ans
