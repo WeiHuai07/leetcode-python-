@@ -1,0 +1,13 @@
+class Solution:
+    def reconstructQueue(self, people: List[List[int]]) -> List[List[int]]:
+        people = sorted(people,key=lambda x:(-x[0],x[1]))
+        #x:x[-1]根据最后一个数正序排；x:(-x[0],x[1])先根据第一个数倒序排，相同根据第二个数正排
+        #points = sorted(points,key=lambda x:x[-1])
+        ans=[]
+
+        for item in people:
+            ans.insert(item[1],item)
+
+        return ans
+
+        #https://www.bilibili.com/video/BV1Kf4y1y7QX?from=search&seid=4861722383369540526
