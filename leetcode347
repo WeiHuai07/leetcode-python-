@@ -1,0 +1,21 @@
+class Solution:
+    def topKFrequent(self, nums: List[int], k: int) -> List[int]:
+        l = {}
+        for i in set(nums):
+            l[i] = 0 
+        for i in nums:
+            l[i] += 1
+        l = dict(sorted(l.items(), key=lambda item: item[1], reverse=True))
+        #https://blog.csdn.net/cxcxrs/article/details/82459800 字典排序解释
+        ll = []
+        for key, value in l.items():
+            ll.append(key)
+            k -= 1
+            if k == 0:
+                break
+        return ll
+
+
+
+'''链接：https://leetcode-cn.com/problems/top-k-frequent-elements/solution/python3-zi-dian-by-jonnyhuang-0its/
+'''
