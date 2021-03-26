@@ -1,0 +1,23 @@
+class Solution:
+    def numSquares(self, n: int) -> int:
+        from collections import deque
+        deq=deque()
+        visited=set()
+        
+        deq.append((n,0))
+        while deq:
+            number,step=deq.popleft()
+            targets=[number-i*i for i in range(1,int(number**0.5)+1)]
+            #假设是7，这时候就是减去1，4 targets=【6，3】
+            for target in targets:
+                if target==0:
+                    return step+1
+                if target not in visited:
+                    deq.append((target,step+1))
+                    #(6,1) (3,1)
+                    visited.add(target)
+                    #6,3
+        return 0
+
+'''链接：https://leetcode-cn.com/problems/perfect-squares/solution/python3zui-ji-chu-de-bfstao-lu-dai-ma-gua-he-ru-me/
+'''
