@@ -1,0 +1,18 @@
+class Solution:
+    def isBalanced(self, root: TreeNode) -> bool:
+        def height(root):
+            if not root:
+                return 0
+            leftHeight = height(root.left)
+            rightHeight = height(root.right)
+            if leftHeight == -1 or rightHeight == -1 or abs(leftHeight - rightHeight) > 1:
+                return -1
+            else:
+                return max(leftHeight, rightHeight) + 1
+
+        return height(root) != -1
+
+
+'''链接：https://leetcode-cn.com/problems/balanced-binary-tree/solution/ping-heng-er-cha-shu-by-leetcode-solution/
+https://www.bilibili.com/video/BV1NJ411v7b1?from=search&seid=1154730558064783992 看后面这个
+'''
