@@ -1,0 +1,13 @@
+class Solution:
+    def isSubtree(self, s: TreeNode, t: TreeNode) -> bool:
+        def ser(root):
+
+            if not root:    
+                return '#'
+            st=' '+str(ser(root.left))+' '+str(ser(root.right))+' '+str(root.val)+' ' #前后加空格，避免[12][1]的情况误判
+            return st
+        
+        return ser(t) in ser(s)
+
+'''链接：https://leetcode-cn.com/problems/subtree-of-another-tree/solution/wu-xing-dai-ma-shi-jian-kong-jian-fen-bi-0gew/
+'''
