@@ -1,0 +1,20 @@
+if not root:
+            return None
+        min_,min_2=float('inf'),float('inf')
+        stack=[root]
+        while stack:
+            node=stack.pop()
+            if node.val <= min_:
+                min_=node.val
+            if node.val > min_ and node.val <= min_2:
+                min_2=node.val
+            if node.left:
+                stack.append(node.left)
+            if node.right:
+                stack.append(node.right)
+        if min_2 != float('inf'):
+            return min_2
+        else: return -1
+
+
+'''链接：https://leetcode-cn.com/problems/second-minimum-node-in-a-binary-tree/solution/li-yong-zhan-bian-li-by-shuai-shuai-d/'''
