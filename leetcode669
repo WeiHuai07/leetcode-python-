@@ -1,0 +1,18 @@
+class Solution:
+    def trimBST(self, root: TreeNode, low: int, high: int) -> TreeNode:
+        def dfs(root, low, high):
+            if root is None:
+                return 
+            if root.val > high:
+                root = dfs(root.left, low, high)
+            elif root.val <low:
+                root = dfs(root.right, low, high)
+            else:
+                root.left = dfs(root.left, low, high)
+                root.right = dfs(root.right, low , high)
+            return root
+        
+        return dfs(root, low, high)
+
+'''链接：https://leetcode-cn.com/problems/trim-a-binary-search-tree/solution/669-xiu-jian-er-cha-sou-suo-shu-di-gui-by-jiang_ku/
+'''
