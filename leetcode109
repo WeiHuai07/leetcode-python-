@@ -1,0 +1,22 @@
+class Solution:
+    def sortedListToBST(self, head: ListNode) -> TreeNode:
+        if not head:
+            return None
+        elif not head.next:
+            return TreeNode(head.val)
+        
+        pre, slow, fast = None, head, head
+        while fast and fast.next:
+            pre = slow
+            slow = slow.next
+            fast = fast.next.next
+        
+        root = TreeNode(slow.val)
+        pre.next = None
+
+        root.left = self.sortedListToBST(head)
+        root.right = self.sortedListToBST(slow.next)
+        return root
+
+'''链接：https://leetcode-cn.com/problems/convert-sorted-list-to-binary-search-tree/solution/109-you-xu-lian-biao-zhuan-huan-er-cha-s-x583/
+'''
