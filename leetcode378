@@ -1,0 +1,15 @@
+import heapq
+class Solution:
+    def kthSmallest(self, matrix: List[List[int]], k: int) -> int:
+        h = []
+        for i in matrix:
+            for j in i:
+                heapq.heappush(h, j)
+        while k:
+            k -= 1
+            x = heapq.heappop(h)
+        return x 
+
+
+'''链接：https://leetcode-cn.com/problems/kth-smallest-element-in-a-sorted-matrix/solution/python3-headq-xiao-dian-dui-shi-jian-fu-020rk/
+'''
