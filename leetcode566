@@ -1,0 +1,23 @@
+class Solution:
+    def matrixReshape(self, nums: List[List[int]], r: int, c: int) -> List[List[int]]:
+        #如果没有办法转化，直接返回原矩阵
+        if len(nums) * len(nums[0]) != r * c:
+            return nums
+        #要返回的矩阵
+        result = []
+        #当前行
+        path = []
+        for words in nums:
+            for word in words:
+                #当前元素入行
+                path.append(word)
+                #c个元素成一行
+                if len(path) == c:
+                    result.append(path)
+                    #下一行置空，继续遍历
+                    path = []
+        #返回
+        return result
+
+'''链接：https://leetcode-cn.com/problems/reshape-the-matrix/solution/python3-mo-ni-by-jonnyhuang-wdpp/
+'''
