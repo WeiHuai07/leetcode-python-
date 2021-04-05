@@ -1,0 +1,15 @@
+class Solution:
+    def findErrorNums(self, nums: List[int]) -> List[int]:
+        blooms = [0] * (len(nums) + 1)
+        for num in nums:
+            blooms[num] +=1 
+        result = [0, 0]
+        for i in range(1, len(blooms)):
+            if blooms[i] == 0: # 缺少的
+                result[1] = i
+            if blooms[i] == 2: # 多余的
+                result[0] = i 
+        return result
+
+'''链接：https://leetcode-cn.com/problems/set-mismatch/solution/yi-ci-tong-guo-ji-shu-pai-xu-onfu-za-du-me5tc/
+'''
