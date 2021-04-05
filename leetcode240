@@ -1,0 +1,19 @@
+class Solution:
+    
+    def searchMatrix(self, matrix: List[List[int]], target: int) -> bool:
+        row = len(matrix)
+        col = len(matrix[0])
+        i = 0
+        j = col - 1
+        while matrix[i][j] != target:
+            if matrix[i][j] < target:
+                i += 1
+            else:
+                j -= 1
+            if i >= row or j < 0:
+                return False
+        return True
+
+
+'''链接：https://leetcode-cn.com/problems/search-a-2d-matrix-ii/solution/si-lu-qing-xi-zhe-xian-sou-suo-by-eloise-kisj/
+'''
