@@ -1,0 +1,15 @@
+class Solution:
+    
+    def nextGreaterElements(self, nums: List[int]) -> List[int]:
+        n = len(nums)
+        monoDec_stk = []                #单调递减栈 monotonic decreasing stack
+        res = [-1 for _ in range(n)]
+        for i in range(2 * n - 1):      # 0 1 2 3 n=4,只要考虑 0 1 2 3 0 1 2 共7=2*n-1个数
+            while monoDec_stk and nums[monoDec_stk[-1]] < nums[i % n]:      #找到了
+                res[monoDec_stk[-1]] = nums[i % n]                          #记录到res
+                monoDec_stk.pop(-1)                                         #弹栈 继续while，看前面的还会不会比它小 (根据这个判断过程，选择的单调递减栈)
+            monoDec_stk.append(i % n)
+        return res
+
+'''链接：https://leetcode-cn.com/problems/next-greater-element-ii/solution/c-python3-dan-diao-di-jian-zhan-li-qing-43uai/
+'''
