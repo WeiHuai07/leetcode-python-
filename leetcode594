@@ -1,0 +1,15 @@
+class Solution:
+    def findLHS(self, nums: List[int]) -> int:
+        dicts={}
+        for i in nums:
+            dicts[i]=dicts.get(i,0)+1
+        #这个要记住，直接写，免得设定来设定去
+        res=0
+        for i in dicts:
+            if i+1 in dicts:
+                res=max(res,dicts[i]+dicts[i+1])
+        return res
+
+
+'''链接：https://leetcode-cn.com/problems/longest-harmonious-subsequence/solution/ha-xi-biao-by-tian-dao-yao-xing-7/
+'''
