@@ -1,0 +1,12 @@
+class Solution:
+    def maxChunksToSorted(self, arr: List[int]) -> int:
+        ans = ma = 0
+        for i, x in enumerate(arr):
+            ma = max(ma, x)
+            if ma == i: ans += 1
+        return ans
+
+'''链接：https://leetcode-cn.com/problems/max-chunks-to-make-sorted/solution/zui-duo-neng-wan-cheng-pai-xu-de-kuai-i-by-leetcod/
+'''
+                
+
