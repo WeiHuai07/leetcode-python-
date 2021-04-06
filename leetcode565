@@ -1,0 +1,26 @@
+class Solution:
+    def arrayNesting(self, nums: List[int]) -> int:
+        S = [-1]*len(nums) # 建立一个相同长度的表格，表格里所有的元素都是-1
+        forward = {} # 这个字典存放前面已经出现过的元素，字典只是为了存取效率
+        # 计算所有S[i]
+        for i in range(len(nums)): #O(n)
+            if S[i] == -1: # 只计算没有遍历过的
+                S[i] = self.getS(nums,i,forward)
+        
+        # 求S[i]中的最大值
+        max = 0
+        for value in S: # O(n)
+            if value > max:
+                max = value
+        return max
+    def getS(self,nums,i,forward):
+        if nums[i] == i:# 与自身相等,返回1
+            return 1
+        if nums[i] in forward: # 和前面的重复的，返回1
+            return 1
+        forward[i] = nums[i]
+        return self.getS(nums,nums[i],forward)+1
+
+
+'''链接：https://leetcode-cn.com/problems/array-nesting/solution/565-shu-zu-qian-tao-python-by-cbaymax/
+'''
