@@ -1,0 +1,22 @@
+class NumArray: 
+    def __init__(self, nums):
+        """
+        initialize your data structure here.
+        :type nums: List[int]
+        """
+        self.pre_sum = [0]
+        for num in nums: 
+            self.pre_sum += self.pre_sum[-1] + num,
+
+    def sumRange(self, i, j):
+        """
+        sum of elements nums[i..j], inclusive.
+        :type i: int 
+        :type j: int
+        :rtype: int 
+        """
+        return self.pre_sum[j + 1] - self.pre_sum[i]
+
+
+'''链接：https://leetcode-cn.com/problems/range-sum-query-immutable/solution/duan-xiao-jing-han-qian-zhui-he-fa-by-do-nzue/
+'''
