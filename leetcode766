@@ -1,0 +1,9 @@
+class Solution:
+    def isToeplitzMatrix(self, matrix: List[List[int]]) -> bool:
+        for i in range(len(matrix) - 1):
+            if matrix[i][:-1] != matrix[i + 1][1:]:
+                return False
+        return True
+
+'''链接：https://leetcode-cn.com/problems/toeplitz-matrix/solution/pan-duan-mei-ge-yuan-su-he-ta-de-you-xia-x3fi/
+'''
